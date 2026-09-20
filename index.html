@@ -6,234 +6,153 @@
 <title>MY DAY</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:#111412;color:#f5f2e9;min-height:100vh
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #111412;
-    color: #f5f2e9;
-    min-height: 100vh;
+.container{width:min(100%,900px);margin:auto;padding:25px 18px 50px}
+
+header{
+display:flex;justify-content:space-between;align-items:center;margin-bottom:30px
 }
 
-.container {
-    width: min(100%, 900px);
-    margin: auto;
-    padding: 25px 18px 50px;
+.logo{font-size:26px;font-weight:800;letter-spacing:2px}
+.date{color:#9ca39c;font-size:13px;text-align:right}
+
+.greeting{margin-bottom:25px}
+.greeting p,.section-title{color:#9ca39c}
+.greeting p{margin-bottom:6px}
+.greeting h1{font-size:32px}
+
+.card{
+background:#191d1a;border:1px solid #292e2a;border-radius:20px;
+padding:22px;margin-bottom:18px
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+.progress-top{
+display:flex;justify-content:space-between;margin-bottom:12px
 }
 
-.logo {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 2px;
+.progress-number{font-size:28px;font-weight:800}
+
+.progress-bar,.week-bar{
+height:9px;background:#2b302c;border-radius:20px;overflow:hidden
 }
 
-.date {
-    color: #9ca39c;
-    font-size: 13px;
-    text-align: right;
+.progress-fill,.week-fill{
+height:100%;width:0%;background:#b8d36b;
+border-radius:20px;transition:.3s
 }
 
-.greeting {
-    margin-bottom: 25px;
+.section-title{
+font-size:13px;text-transform:uppercase;letter-spacing:1.5px;
+margin-bottom:15px
 }
 
-.greeting p {
-    color: #9ca39c;
-    margin-bottom: 6px;
+.habit{
+display:flex;align-items:center;gap:15px;padding:16px 0;
+border-bottom:1px solid #292e2a
 }
 
-.greeting h1 {
-    font-size: 32px;
+.habit:last-child{border-bottom:none}
+
+.check{
+width:30px;height:30px;border:2px solid #4b534d;border-radius:50%;
+cursor:pointer;flex-shrink:0;display:flex;align-items:center;
+justify-content:center
 }
 
-.card {
-    background: #191d1a;
-    border: 1px solid #292e2a;
-    border-radius: 20px;
-    padding: 22px;
-    margin-bottom: 18px;
+.check.done{background:#b8d36b;border-color:#b8d36b;color:#111412}
+
+.habit-info{flex:1}
+.habit-name{font-size:16px;font-weight:700}
+.habit-desc{color:#858d87;font-size:13px;margin-top:4px}
+.xp{color:#b8d36b;font-size:12px;font-weight:700}
+
+.week-row{
+display:flex;justify-content:space-between;align-items:center;margin-bottom:15px
 }
 
-.progress-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+.week-number{font-size:25px;font-weight:800}
+
+.stats{
+display:grid;grid-template-columns:repeat(3,1fr);gap:12px
 }
 
-.progress-number {
-    font-size: 28px;
-    font-weight: 800;
+.stat{
+background:#191d1a;border:1px solid #292e2a;border-radius:18px;
+padding:18px 12px;text-align:center
 }
 
-.progress-bar {
-    height: 9px;
-    background: #2b302c;
-    border-radius: 20px;
-    overflow: hidden;
+.stat-number{font-size:24px;font-weight:800}
+.stat-label{color:#858d87;font-size:11px;margin-top:5px}
+
+.quote{text-align:center;color:#858d87;font-size:13px;margin-top:25px;line-height:1.6}
+
+.reset{
+display:block;margin:25px auto 0;background:transparent;
+border:1px solid #333a35;color:#777f79;padding:9px 14px;
+border-radius:10px
 }
 
-.progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #b8d36b;
-    border-radius: 20px;
-    transition: width .3s ease;
+/* CALENDARIO */
+
+.calendar-head{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:18px
 }
 
-.section-title {
-    font-size: 13px;
-    color: #9ca39c;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 15px;
+.calendar-title{font-size:22px;font-weight:800}
+
+.calendar-buttons{
+display:flex;gap:8px
 }
 
-.habit {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 16px 0;
-    border-bottom: 1px solid #292e2a;
+.calendar-buttons button{
+background:#292e2a;border:0;color:#f5f2e9;
+width:35px;height:35px;border-radius:10px;font-size:18px
 }
 
-.habit:last-child {
-    border-bottom: none;
+.weekdays,.calendar{
+display:grid;grid-template-columns:repeat(7,1fr);gap:7px
 }
 
-.check {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #4b534d;
-    border-radius: 50%;
-    cursor: pointer;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .2s;
+.weekdays div{
+text-align:center;color:#858d87;font-size:11px;font-weight:700
 }
 
-.check.done {
-    background: #b8d36b;
-    border-color: #b8d36b;
-    color: #111412;
+.day{
+min-height:55px;background:#222722;border-radius:12px;
+padding:8px;text-align:center;cursor:pointer;
+border:1px solid transparent
 }
 
-.habit-info {
-    flex: 1;
+.day.empty{background:transparent;cursor:default}
+
+.day-number{font-size:13px;font-weight:700}
+
+.day-status{
+width:8px;height:8px;border-radius:50%;
+margin:8px auto 0;background:#4b534d
 }
 
-.habit-name {
-    font-size: 16px;
-    font-weight: 700;
+.day.partial .day-status{background:#d7ad4c}
+.day.complete .day-status{background:#b8d36b}
+.day.today{border-color:#b8d36b}
+
+.history-box{
+margin-top:18px;padding:16px;background:#222722;
+border-radius:15px;display:none
 }
 
-.habit-desc {
-    color: #858d87;
-    font-size: 13px;
-    margin-top: 4px;
-}
+.history-title{font-weight:800;margin-bottom:10px}
+.history-list{color:#aeb5af;font-size:13px;line-height:1.8}
 
-.xp {
-    color: #b8d36b;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.week-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.week-number {
-    font-size: 25px;
-    font-weight: 800;
-}
-
-.week-bar {
-    height: 9px;
-    background: #2b302c;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.week-fill {
-    height: 100%;
-    width: 0%;
-    background: #b8d36b;
-    border-radius: 20px;
-    transition: width .3s ease;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-.stat {
-    background: #191d1a;
-    border: 1px solid #292e2a;
-    border-radius: 18px;
-    padding: 18px 12px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 24px;
-    font-weight: 800;
-}
-
-.stat-label {
-    color: #858d87;
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-.quote {
-    text-align: center;
-    color: #858d87;
-    font-size: 13px;
-    margin-top: 25px;
-    line-height: 1.6;
-}
-
-.reset {
-    display: block;
-    margin: 25px auto 0;
-    background: transparent;
-    border: 1px solid #333a35;
-    color: #777f79;
-    padding: 9px 14px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-@media (max-width: 500px) {
-    .greeting h1 {
-        font-size: 28px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .container {
-        padding-top: 20px;
-    }
+@media(max-width:500px){
+.greeting h1{font-size:28px}
 }
 </style>
 </head>
@@ -243,137 +162,156 @@ header {
 <div class="container">
 
 <header>
-    <div class="logo">MY DAY</div>
-    <div class="date" id="date"></div>
+<div class="logo">MY DAY</div>
+<div class="date" id="date"></div>
 </header>
 
 <div class="greeting">
-    <p>OGGI</p>
-    <h1>Costruisci la tua giornata.</h1>
+<p>OGGI</p>
+<h1>Costruisci la tua giornata.</h1>
 </div>
 
 <div class="card">
 
-    <div class="progress-top">
-        <div>
-            <div class="section-title">PROGRESSO DI OGGI</div>
-            <div class="progress-number" id="dailyPercent">0%</div>
-        </div>
-
-        <div style="text-align:right">
-            <div class="section-title">XP</div>
-            <div class="progress-number" id="xp">0</div>
-        </div>
-    </div>
-
-    <div class="progress-bar">
-        <div class="progress-fill" id="dailyFill"></div>
-    </div>
-
+<div class="progress-top">
+<div>
+<div class="section-title">PROGRESSO DI OGGI</div>
+<div class="progress-number" id="dailyPercent">0%</div>
 </div>
 
-<div class="card">
+<div style="text-align:right">
+<div class="section-title">XP</div>
+<div class="progress-number" id="xp">0</div>
+</div>
+</div>
 
-    <div class="section-title">LE TUE ABITUDINI</div>
-
-    <div class="habit">
-        <div class="check" data-id="gym"></div>
-
-        <div class="habit-info">
-            <div class="habit-name">🏋️ Palestra</div>
-            <div class="habit-desc">Allenamento — obiettivo 5 volte a settimana</div>
-        </div>
-
-        <div class="xp">+30 XP</div>
-    </div>
-
-    <div class="habit">
-        <div class="check" data-id="stretch"></div>
-
-        <div class="habit-info">
-            <div class="habit-name">🧘 Stretching</div>
-            <div class="habit-desc">10 minuti</div>
-        </div>
-
-        <div class="xp">+10 XP</div>
-    </div>
-
-    <div class="habit">
-        <div class="check" data-id="bible"></div>
-
-        <div class="habit-info">
-            <div class="habit-name">📖 Bibbia</div>
-            <div class="habit-desc">Leggere 1 capitolo</div>
-        </div>
-
-        <div class="xp">+15 XP</div>
-    </div>
-
-    <div class="habit">
-        <div class="check" data-id="dog"></div>
-
-        <div class="habit-info">
-            <div class="habit-name">🐕 Cane</div>
-            <div class="habit-desc">Portare fuori il cane</div>
-        </div>
-
-        <div class="xp">+10 XP</div>
-    </div>
-
-    <div class="habit">
-        <div class="check" data-id="tomorrow"></div>
-
-        <div class="habit-info">
-            <div class="habit-name">🌙 Domani</div>
-            <div class="habit-desc">Preparare le cose per il giorno successivo</div>
-        </div>
-
-        <div class="xp">+15 XP</div>
-    </div>
+<div class="progress-bar">
+<div class="progress-fill" id="dailyFill"></div>
+</div>
 
 </div>
 
 <div class="card">
 
-    <div class="section-title">PALESTRA — QUESTA SETTIMANA</div>
+<div class="section-title">LE TUE ABITUDINI</div>
 
-    <div class="week-row">
-        <div>
-            <div class="week-number">
-                <span id="gymCount">0</span> / 5
-            </div>
-            <div class="habit-desc">allenamenti completati</div>
-        </div>
-    </div>
+<div class="habit">
+<div class="check" data-id="gym"></div>
+<div class="habit-info">
+<div class="habit-name">🏋️ Palestra</div>
+<div class="habit-desc">Allenamento — obiettivo 5 volte a settimana</div>
+</div>
+<div class="xp">+30 XP</div>
+</div>
 
-    <div class="week-bar">
-        <div class="week-fill" id="weekFill"></div>
-    </div>
+<div class="habit">
+<div class="check" data-id="stretch"></div>
+<div class="habit-info">
+<div class="habit-name">🧘 Stretching</div>
+<div class="habit-desc">10 minuti</div>
+</div>
+<div class="xp">+10 XP</div>
+</div>
+
+<div class="habit">
+<div class="check" data-id="bible"></div>
+<div class="habit-info">
+<div class="habit-name">📖 Bibbia</div>
+<div class="habit-desc">Leggere 1 capitolo</div>
+</div>
+<div class="xp">+15 XP</div>
+</div>
+
+<div class="habit">
+<div class="check" data-id="dog"></div>
+<div class="habit-info">
+<div class="habit-name">🐕 Cane</div>
+<div class="habit-desc">Portare fuori il cane</div>
+</div>
+<div class="xp">+10 XP</div>
+</div>
+
+<div class="habit">
+<div class="check" data-id="tomorrow"></div>
+<div class="habit-info">
+<div class="habit-name">🌙 Domani</div>
+<div class="habit-desc">Preparare le cose per il giorno successivo</div>
+</div>
+<div class="xp">+15 XP</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">🏋️ PALESTRA — QUESTA SETTIMANA</div>
+
+<div class="week-row">
+<div>
+<div class="week-number"><span id="gymCount">0</span> / 5</div>
+<div class="habit-desc">allenamenti completati</div>
+</div>
+</div>
+
+<div class="week-bar">
+<div class="week-fill" id="weekFill"></div>
+</div>
+
+</div>
+
+<!-- CALENDARIO -->
+
+<div class="card">
+
+<div class="section-title">📅 STORICO</div>
+
+<div class="calendar-head">
+<div class="calendar-title" id="monthTitle"></div>
+
+<div class="calendar-buttons">
+<button onclick="changeMonth(-1)">‹</button>
+<button onclick="changeMonth(1)">›</button>
+</div>
+</div>
+
+<div class="weekdays">
+<div>L</div><div>M</div><div>M</div>
+<div>G</div><div>V</div><div>S</div><div>D</div>
+</div>
+
+<br>
+
+<div class="calendar" id="calendar"></div>
+
+<div class="history-box" id="historyBox">
+<div class="history-title" id="historyTitle"></div>
+<div class="history-list" id="historyList"></div>
+</div>
 
 </div>
 
 <div class="stats">
 
-    <div class="stat">
-        <div class="stat-number" id="completed">0</div>
-        <div class="stat-label">COMPLETATE OGGI</div>
-    </div>
+<div class="stat">
+<div class="stat-number" id="completed">0</div>
+<div class="stat-label">COMPLETATE OGGI</div>
+</div>
 
-    <div class="stat">
-        <div class="stat-number" id="streak">0</div>
-        <div class="stat-label">GIORNI DI FILA</div>
-    </div>
+<div class="stat">
+<div class="stat-number" id="streak">0</div>
+<div class="stat-label">GIORNI DI FILA</div>
+</div>
 
-    <div class="stat">
-        <div class="stat-number" id="totalXP">0</div>
-        <div class="stat-label">XP TOTALI</div>
-    </div>
+<div class="stat">
+<div class="stat-number" id="totalXP">0</div>
+<div class="stat-label">XP TOTALI</div>
+</div>
 
 </div>
 
 <div class="quote">
-    La disciplina non significa essere perfetti.<br>
-    Significa tornare ogni giorno sulla strada che hai scelto.
+La disciplina non significa essere perfetti.<br>
+Significa tornare ogni giorno sulla strada che hai scelto.
 </div>
 
 <button class="reset" onclick="resetToday()">Reset giornata</button>
@@ -382,207 +320,274 @@ header {
 
 <script>
 
-const habits = {
-    gym: 30,
-    stretch: 10,
-    bible: 15,
-    dog: 10,
-    tomorrow: 15
+const habits={
+gym:30,
+stretch:10,
+bible:15,
+dog:10,
+tomorrow:15
 };
 
-const today = new Date();
-
-const dateKey =
-    today.getFullYear() + "-" +
-    String(today.getMonth() + 1).padStart(2, "0") + "-" +
-    String(today.getDate()).padStart(2, "0");
-
-const dayDataKey = "myday-" + dateKey;
-
-let todayData = JSON.parse(localStorage.getItem(dayDataKey)) || {};
-
-let totalXP = Number(localStorage.getItem("myday-total-xp")) || 0;
-
-const dateOptions = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
+const names={
+gym:"🏋️ Palestra",
+stretch:"🧘 Stretching",
+bible:"📖 Bibbia",
+dog:"🐕 Cane",
+tomorrow:"🌙 Preparazione"
 };
 
-document.getElementById("date").textContent =
-    today.toLocaleDateString("it-IT", dateOptions);
+const today=new Date();
 
-function save() {
-    localStorage.setItem(dayDataKey, JSON.stringify(todayData));
-    localStorage.setItem("myday-total-xp", totalXP);
+function keyFor(date){
+return date.getFullYear()+"-"+
+String(date.getMonth()+1).padStart(2,"0")+"-"+
+String(date.getDate()).padStart(2,"0");
 }
 
-function render() {
+const todayKey=keyFor(today);
+const todayDataKey="myday-"+todayKey;
 
-    let completed = 0;
-    let xpToday = 0;
+let todayData=JSON.parse(localStorage.getItem(todayDataKey))||{};
+let totalXP=Number(localStorage.getItem("myday-total-xp"))||0;
 
-    document.querySelectorAll(".check").forEach(check => {
+document.getElementById("date").textContent=
+today.toLocaleDateString("it-IT",{
+weekday:"long",
+day:"numeric",
+month:"long"
+});
 
-        const id = check.dataset.id;
-
-        if (todayData[id]) {
-
-            check.classList.add("done");
-            check.textContent = "✓";
-
-            completed++;
-            xpToday += habits[id];
-
-        } else {
-
-            check.classList.remove("done");
-            check.textContent = "";
-
-        }
-
-    });
-
-    const percent = Math.round((completed / 5) * 100);
-
-    document.getElementById("dailyPercent").textContent = percent + "%";
-    document.getElementById("dailyFill").style.width = percent + "%";
-
-    document.getElementById("completed").textContent = completed;
-
-    document.getElementById("xp").textContent = xpToday;
-    document.getElementById("totalXP").textContent = totalXP;
-
-    updateGym();
-    updateStreak();
+function save(){
+localStorage.setItem(todayDataKey,JSON.stringify(todayData));
+localStorage.setItem("myday-total-xp",totalXP);
 }
 
-document.querySelectorAll(".check").forEach(check => {
+function render(){
 
-    check.addEventListener("click", () => {
+let completed=0;
+let xpToday=0;
 
-        const id = check.dataset.id;
+document.querySelectorAll(".check").forEach(check=>{
 
-        if (todayData[id]) {
+const id=check.dataset.id;
 
-            todayData[id] = false;
-            totalXP -= habits[id];
-
-        } else {
-
-            todayData[id] = true;
-            totalXP += habits[id];
-
-        }
-
-        save();
-        render();
-
-    });
+if(todayData[id]){
+check.classList.add("done");
+check.textContent="✓";
+completed++;
+xpToday+=habits[id];
+}else{
+check.classList.remove("done");
+check.textContent="";
+}
 
 });
 
-function getWeekDates() {
+const percent=Math.round(completed/5*100);
 
-    const d = new Date();
-    const day = d.getDay();
+document.getElementById("dailyPercent").textContent=percent+"%";
+document.getElementById("dailyFill").style.width=percent+"%";
+document.getElementById("completed").textContent=completed;
+document.getElementById("xp").textContent=xpToday;
+document.getElementById("totalXP").textContent=totalXP;
 
-    const diff = day === 0 ? -6 : 1 - day;
+updateGym();
+updateStreak();
+renderCalendar();
 
-    const monday = new Date(d);
-    monday.setDate(d.getDate() + diff);
-
-    let dates = [];
-
-    for (let i = 0; i < 7; i++) {
-
-        const date = new Date(monday);
-        date.setDate(monday.getDate() + i);
-
-        const key =
-            date.getFullYear() + "-" +
-            String(date.getMonth() + 1).padStart(2, "0") + "-" +
-            String(date.getDate()).padStart(2, "0");
-
-        dates.push(key);
-    }
-
-    return dates;
 }
 
-function updateGym() {
+document.querySelectorAll(".check").forEach(check=>{
 
-    const dates = getWeekDates();
+check.addEventListener("click",()=>{
 
-    let count = 0;
+const id=check.dataset.id;
 
-    dates.forEach(date => {
-
-        const data =
-            JSON.parse(localStorage.getItem("myday-" + date)) || {};
-
-        if (data.gym) {
-            count++;
-        }
-
-    });
-
-    document.getElementById("gymCount").textContent = count;
-
-    const percent = Math.min((count / 5) * 100, 100);
-
-    document.getElementById("weekFill").style.width =
-        percent + "%";
+if(todayData[id]){
+todayData[id]=false;
+totalXP-=habits[id];
+}else{
+todayData[id]=true;
+totalXP+=habits[id];
 }
 
-function updateStreak() {
+save();
+render();
 
-    let streak = 0;
-    let current = new Date();
+});
 
-    while (true) {
+});
 
-        const key =
-            current.getFullYear() + "-" +
-            String(current.getMonth() + 1).padStart(2, "0") + "-" +
-            String(current.getDate()).padStart(2, "0");
+function getWeekDates(){
 
-        const data =
-            JSON.parse(localStorage.getItem("myday-" + key));
+const d=new Date();
+const day=d.getDay();
+const diff=day===0?-6:1-day;
 
-        if (!data) break;
+const monday=new Date(d);
+monday.setDate(d.getDate()+diff);
 
-        const completed =
-            Object.values(data).filter(Boolean).length;
+let dates=[];
 
-        if (completed === 0) break;
-
-        streak++;
-
-        current.setDate(current.getDate() - 1);
-    }
-
-    document.getElementById("streak").textContent = streak;
+for(let i=0;i<7;i++){
+const date=new Date(monday);
+date.setDate(monday.getDate()+i);
+dates.push(keyFor(date));
 }
 
-function resetToday() {
+return dates;
+}
 
-    if (!confirm("Vuoi davvero azzerare la giornata?")) {
-        return;
-    }
+function updateGym(){
 
-    Object.keys(todayData).forEach(id => {
+let count=0;
 
-        if (todayData[id]) {
-            totalXP -= habits[id];
-        }
+getWeekDates().forEach(date=>{
+const data=JSON.parse(localStorage.getItem("myday-"+date))||{};
+if(data.gym)count++;
+});
 
-    });
+document.getElementById("gymCount").textContent=count;
 
-    todayData = {};
+document.getElementById("weekFill").style.width=
+Math.min(count/5*100,100)+"%";
+}
 
-    save();
-    render();
+function updateStreak(){
+
+let streak=0;
+let current=new Date();
+
+while(true){
+
+const data=
+JSON.parse(localStorage.getItem("myday-"+keyFor(current)));
+
+if(!data)break;
+
+if(Object.values(data).filter(Boolean).length===0)break;
+
+streak++;
+current.setDate(current.getDate()-1);
+
+}
+
+document.getElementById("streak").textContent=streak;
+}
+
+function resetToday(){
+
+if(!confirm("Vuoi davvero azzerare la giornata?"))return;
+
+Object.keys(todayData).forEach(id=>{
+if(todayData[id])totalXP-=habits[id];
+});
+
+todayData={};
+
+save();
+render();
+
+}
+
+/* CALENDARIO */
+
+let calendarDate=new Date();
+
+function changeMonth(amount){
+
+calendarDate.setMonth(calendarDate.getMonth()+amount);
+renderCalendar();
+
+}
+
+function renderCalendar(){
+
+const year=calendarDate.getFullYear();
+const month=calendarDate.getMonth();
+
+document.getElementById("monthTitle").textContent=
+calendarDate.toLocaleDateString("it-IT",{
+month:"long",
+year:"numeric"
+});
+
+const calendar=document.getElementById("calendar");
+calendar.innerHTML="";
+
+const first=new Date(year,month,1);
+
+let start=first.getDay();
+if(start===0)start=7;
+
+for(let i=1;i<start;i++){
+
+const empty=document.createElement("div");
+empty.className="day empty";
+calendar.appendChild(empty);
+
+}
+
+const days=new Date(year,month+1,0).getDate();
+
+for(let day=1;day<=days;day++){
+
+const date=new Date(year,month,day);
+const key=keyFor(date);
+
+const data=JSON.parse(localStorage.getItem("myday-"+key))||{};
+
+const completed=
+Object.values(data).filter(Boolean).length;
+
+const cell=document.createElement("div");
+cell.className="day";
+
+if(completed===5)cell.classList.add("complete");
+else if(completed>0)cell.classList.add("partial");
+
+if(key===todayKey)cell.classList.add("today");
+
+cell.innerHTML=
+'<div class="day-number">'+day+'</div>'+
+'<div class="day-status"></div>';
+
+cell.onclick=()=>showHistory(date,data);
+
+calendar.appendChild(cell);
+
+}
+
+}
+
+function showHistory(date,data){
+
+const box=document.getElementById("historyBox");
+const title=document.getElementById("historyTitle");
+const list=document.getElementById("historyList");
+
+title.textContent=
+date.toLocaleDateString("it-IT",{
+weekday:"long",
+day:"numeric",
+month:"long"
+});
+
+let html="";
+
+Object.keys(names).forEach(id=>{
+
+if(data[id]){
+html+="✓ "+names[id]+"<br>";
+}else{
+html+="○ "+names[id]+"<br>";
+}
+
+});
+
+list.innerHTML=html;
+box.style.display="block";
+
 }
 
 render();
